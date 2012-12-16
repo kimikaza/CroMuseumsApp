@@ -1,0 +1,299 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DB163E1A167DC52C00EE51AC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB163E19167DC52C00EE51AC /* UIKit.framework */; };
+		DB163E1C167DC52C00EE51AC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB163E1B167DC52C00EE51AC /* Foundation.framework */; };
+		DB163E1E167DC52C00EE51AC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB163E1D167DC52C00EE51AC /* CoreGraphics.framework */; };
+		DB163E24167DC52C00EE51AC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB163E22167DC52C00EE51AC /* InfoPlist.strings */; };
+		DB163E26167DC52C00EE51AC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DB163E25167DC52C00EE51AC /* main.m */; };
+		DB163E2A167DC52C00EE51AC /* MAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DB163E29167DC52C00EE51AC /* MAAppDelegate.m */; };
+		DB163E2C167DC52D00EE51AC /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = DB163E2B167DC52D00EE51AC /* Default.png */; };
+		DB163E2E167DC52D00EE51AC /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB163E2D167DC52D00EE51AC /* Default@2x.png */; };
+		DB163E30167DC52D00EE51AC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB163E2F167DC52D00EE51AC /* Default-568h@2x.png */; };
+		DB163E33167DC52D00EE51AC /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB163E31167DC52D00EE51AC /* MainStoryboard.storyboard */; };
+		DB163E36167DC52D00EE51AC /* MAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB163E35167DC52D00EE51AC /* MAViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		DB163E15167DC52C00EE51AC /* MuseumApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MuseumApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB163E19167DC52C00EE51AC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		DB163E1B167DC52C00EE51AC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		DB163E1D167DC52C00EE51AC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		DB163E21167DC52C00EE51AC /* MuseumApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MuseumApp-Info.plist"; sourceTree = "<group>"; };
+		DB163E23167DC52C00EE51AC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DB163E25167DC52C00EE51AC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DB163E27167DC52C00EE51AC /* MuseumApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MuseumApp-Prefix.pch"; sourceTree = "<group>"; };
+		DB163E28167DC52C00EE51AC /* MAAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAAppDelegate.h; sourceTree = "<group>"; };
+		DB163E29167DC52C00EE51AC /* MAAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAAppDelegate.m; sourceTree = "<group>"; };
+		DB163E2B167DC52D00EE51AC /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		DB163E2D167DC52D00EE51AC /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		DB163E2F167DC52D00EE51AC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		DB163E32167DC52D00EE51AC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		DB163E34167DC52D00EE51AC /* MAViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAViewController.h; sourceTree = "<group>"; };
+		DB163E35167DC52D00EE51AC /* MAViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DB163E12167DC52C00EE51AC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB163E1A167DC52C00EE51AC /* UIKit.framework in Frameworks */,
+				DB163E1C167DC52C00EE51AC /* Foundation.framework in Frameworks */,
+				DB163E1E167DC52C00EE51AC /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DB163E0A167DC52C00EE51AC = {
+			isa = PBXGroup;
+			children = (
+				DB163E1F167DC52C00EE51AC /* MuseumApp */,
+				DB163E18167DC52C00EE51AC /* Frameworks */,
+				DB163E16167DC52C00EE51AC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DB163E16167DC52C00EE51AC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DB163E15167DC52C00EE51AC /* MuseumApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DB163E18167DC52C00EE51AC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DB163E19167DC52C00EE51AC /* UIKit.framework */,
+				DB163E1B167DC52C00EE51AC /* Foundation.framework */,
+				DB163E1D167DC52C00EE51AC /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DB163E1F167DC52C00EE51AC /* MuseumApp */ = {
+			isa = PBXGroup;
+			children = (
+				DB163E28167DC52C00EE51AC /* MAAppDelegate.h */,
+				DB163E29167DC52C00EE51AC /* MAAppDelegate.m */,
+				DB163E31167DC52D00EE51AC /* MainStoryboard.storyboard */,
+				DB163E34167DC52D00EE51AC /* MAViewController.h */,
+				DB163E35167DC52D00EE51AC /* MAViewController.m */,
+				DB163E20167DC52C00EE51AC /* Supporting Files */,
+			);
+			path = MuseumApp;
+			sourceTree = "<group>";
+		};
+		DB163E20167DC52C00EE51AC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DB163E21167DC52C00EE51AC /* MuseumApp-Info.plist */,
+				DB163E22167DC52C00EE51AC /* InfoPlist.strings */,
+				DB163E25167DC52C00EE51AC /* main.m */,
+				DB163E27167DC52C00EE51AC /* MuseumApp-Prefix.pch */,
+				DB163E2B167DC52D00EE51AC /* Default.png */,
+				DB163E2D167DC52D00EE51AC /* Default@2x.png */,
+				DB163E2F167DC52D00EE51AC /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DB163E14167DC52C00EE51AC /* MuseumApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DB163E39167DC52D00EE51AC /* Build configuration list for PBXNativeTarget "MuseumApp" */;
+			buildPhases = (
+				DB163E11167DC52C00EE51AC /* Sources */,
+				DB163E12167DC52C00EE51AC /* Frameworks */,
+				DB163E13167DC52C00EE51AC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MuseumApp;
+			productName = MuseumApp;
+			productReference = DB163E15167DC52C00EE51AC /* MuseumApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DB163E0C167DC52C00EE51AC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = MA;
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "Zoran Plesko";
+			};
+			buildConfigurationList = DB163E0F167DC52C00EE51AC /* Build configuration list for PBXProject "MuseumApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = DB163E0A167DC52C00EE51AC;
+			productRefGroup = DB163E16167DC52C00EE51AC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DB163E14167DC52C00EE51AC /* MuseumApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DB163E13167DC52C00EE51AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB163E24167DC52C00EE51AC /* InfoPlist.strings in Resources */,
+				DB163E2C167DC52D00EE51AC /* Default.png in Resources */,
+				DB163E2E167DC52D00EE51AC /* Default@2x.png in Resources */,
+				DB163E30167DC52D00EE51AC /* Default-568h@2x.png in Resources */,
+				DB163E33167DC52D00EE51AC /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DB163E11167DC52C00EE51AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB163E26167DC52C00EE51AC /* main.m in Sources */,
+				DB163E2A167DC52C00EE51AC /* MAAppDelegate.m in Sources */,
+				DB163E36167DC52D00EE51AC /* MAViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		DB163E22167DC52C00EE51AC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DB163E23167DC52C00EE51AC /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		DB163E31167DC52D00EE51AC /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DB163E32167DC52D00EE51AC /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DB163E37167DC52D00EE51AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		DB163E38167DC52D00EE51AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DB163E3A167DC52D00EE51AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MuseumApp/MuseumApp-Prefix.pch";
+				INFOPLIST_FILE = "MuseumApp/MuseumApp-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		DB163E3B167DC52D00EE51AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MuseumApp/MuseumApp-Prefix.pch";
+				INFOPLIST_FILE = "MuseumApp/MuseumApp-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DB163E0F167DC52C00EE51AC /* Build configuration list for PBXProject "MuseumApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB163E37167DC52D00EE51AC /* Debug */,
+				DB163E38167DC52D00EE51AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DB163E39167DC52D00EE51AC /* Build configuration list for PBXNativeTarget "MuseumApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB163E3A167DC52D00EE51AC /* Debug */,
+				DB163E3B167DC52D00EE51AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DB163E0C167DC52C00EE51AC /* Project object */;
+}
