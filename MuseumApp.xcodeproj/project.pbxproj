@@ -18,6 +18,8 @@
 		DB163E30167DC52D00EE51AC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB163E2F167DC52D00EE51AC /* Default-568h@2x.png */; };
 		DB163E33167DC52D00EE51AC /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB163E31167DC52D00EE51AC /* MainStoryboard.storyboard */; };
 		DB163E36167DC52D00EE51AC /* MAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB163E35167DC52D00EE51AC /* MAViewController.m */; };
+		DB163E3D167DC64400EE51AC /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB163E3C167DC64400EE51AC /* CoreData.framework */; };
+		DB163E40167DCFCD00EE51AC /* MuseumsApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DB163E3E167DCFCD00EE51AC /* MuseumsApp.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		DB163E32167DC52D00EE51AC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		DB163E34167DC52D00EE51AC /* MAViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAViewController.h; sourceTree = "<group>"; };
 		DB163E35167DC52D00EE51AC /* MAViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAViewController.m; sourceTree = "<group>"; };
+		DB163E3C167DC64400EE51AC /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		DB163E3F167DCFCD00EE51AC /* MuseumsApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MuseumsApp.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB163E3D167DC64400EE51AC /* CoreData.framework in Frameworks */,
 				DB163E1A167DC52C00EE51AC /* UIKit.framework in Frameworks */,
 				DB163E1C167DC52C00EE51AC /* Foundation.framework in Frameworks */,
 				DB163E1E167DC52C00EE51AC /* CoreGraphics.framework in Frameworks */,
@@ -73,6 +78,7 @@
 		DB163E18167DC52C00EE51AC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DB163E3C167DC64400EE51AC /* CoreData.framework */,
 				DB163E19167DC52C00EE51AC /* UIKit.framework */,
 				DB163E1B167DC52C00EE51AC /* Foundation.framework */,
 				DB163E1D167DC52C00EE51AC /* CoreGraphics.framework */,
@@ -88,6 +94,7 @@
 				DB163E31167DC52D00EE51AC /* MainStoryboard.storyboard */,
 				DB163E34167DC52D00EE51AC /* MAViewController.h */,
 				DB163E35167DC52D00EE51AC /* MAViewController.m */,
+				DB163E3E167DCFCD00EE51AC /* MuseumsApp.xcdatamodeld */,
 				DB163E20167DC52C00EE51AC /* Supporting Files */,
 			);
 			path = MuseumApp;
@@ -177,6 +184,7 @@
 				DB163E26167DC52C00EE51AC /* main.m in Sources */,
 				DB163E2A167DC52C00EE51AC /* MAAppDelegate.m in Sources */,
 				DB163E36167DC52D00EE51AC /* MAViewController.m in Sources */,
+				DB163E40167DCFCD00EE51AC /* MuseumsApp.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +302,19 @@
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		DB163E3E167DCFCD00EE51AC /* MuseumsApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				DB163E3F167DCFCD00EE51AC /* MuseumsApp.xcdatamodel */,
+			);
+			currentVersion = DB163E3F167DCFCD00EE51AC /* MuseumsApp.xcdatamodel */;
+			path = MuseumsApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = DB163E0C167DC52C00EE51AC /* Project object */;
 }
