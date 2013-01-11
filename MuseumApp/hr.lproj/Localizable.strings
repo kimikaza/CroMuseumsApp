@@ -1,0 +1,32 @@
+/* 
+  Localizable.strings
+  MuseumApp
+
+  Created by Zoran Plesko on 1/9/13.
+  Copyright (c) 2013 Zoran Plesko. All rights reserved.
+*/
+
+"InfoScreenUputeEN.png" = "InfoScreenUputeHR.png";
+"InfoScreenIkoneEN.png" = "InfoScreenIkoneHR.png";
+"InfoScreenPrazniciEN.png" = "InfoScreenPrazniciHR.png";
+"InfoScreenJezikEN.png" = "InfoScreenJezikHR.png";
+"name_en" = "name_hr";
+"about_en" = "about_hr";
+"hours_en" = "hours_hr";
+"price_en" = "price_hr";
+"guide_en" = "guide_hr";
+"Address" = "Adresa";
+"Phone" = "Tel";
+"event_en" = "event_hr";
+"additional_en" = "additional_hr";
+"comment_en" = "comment_hr";
+"Cancel" = "Odustani";
+"Comment" = "Komentiraj";
+"The museum can be rated only once, and you have already rated this one!" = "Muzej možeš ocijeniti samo jednom, a ovaj već jesi!";
+"Hello!" = "Pozdrav!";
+"Search" = "Traži";
+"You haven't added any museum to your favourites yet :(" = "Nemaš spremljen još niti jedan muzej pod svoje favorite :(";
+"It seems your internet connection is down" = "Izgleda da trenutno nemaš vezu s internetom!";
+"To rate the museum, you need internet connection!" = "Izgleda da trenutno nemaš vezu s internetom pa ne možeš ocijeniti muzej!";
+"To post a comment, you need internet connection!" = "Izgleda da trenutno nemaš vezu s internetom pa ne možeš komentirati muzej!";
+"No one commented on this museum yet :(</br></br>(or you can't see the comments because you are not connected to the internet)" = "Još nitko nije komentirao ovaj muzej :(</br></br>(ili ne vidiš komentare jer nemaš vezu s internetom)";

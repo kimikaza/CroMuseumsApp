@@ -1,20 +1,57 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1810" systemVersion="11G63b" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="11G63b" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Museum" syncable="YES">
+        <attribute name="about_de" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="about_en" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="about_hr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="access" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="additional_de" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="additional_en" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="additional_hr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="audio" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="avg_rating" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="cafe" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="comment_de" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="comment_en" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="comment_hr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_de" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_en" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_hr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="favourite" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="guide_de" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="guide_en" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="guide_hr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hours_de" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hours_en" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hours_hr" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="street_address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name_de" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name_en" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name_hr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="no" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="post" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="price_de" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="price_en" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="price_hr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="server_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shop" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="street" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="voted" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="web" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="pictures" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Picture" inverseName="museum" inverseEntity="Picture" syncable="YES"/>
     </entity>
     <entity name="Picture" syncable="YES">
-        <attribute name="path" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="museum" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Museum" inverseName="pictures" inverseEntity="Museum" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Museum" positionX="160" positionY="192" width="128" height="150"/>
-        <element name="Picture" positionX="160" positionY="192" width="128" height="75"/>
+        <element name="Museum" positionX="36" positionY="192" width="128" height="690"/>
+        <element name="Picture" positionX="-227" positionY="192" width="128" height="60"/>
     </elements>
 </model>

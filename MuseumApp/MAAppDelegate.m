@@ -7,6 +7,9 @@
 //
 
 #import "MAAppDelegate.h"
+#import "MAViewController.h"
+#import "MAStarLoader.h"
+#import "MAStringTranslator.h"
 
 @implementation MAAppDelegate
 
@@ -15,11 +18,78 @@
 @synthesize managedObjectContext;// = __managedObjectContext;
 @synthesize managedObjectModel;// = __managedObjectModel;
 @synthesize persistentStoreCoordinator;// = __persistentStoreCoordinator;
+@synthesize st;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    self.locationManager.delegate = self;
+    [self.locationManager startUpdatingLocation];
+    self.startLocation = nil;
+    self.st = [[MAStringTranslator alloc] init];
+    NSString *lang=[[NSLocale preferredLanguages] objectAtIndex:0];
+    NSLog(@"iPhone language is: %@ ", lang);
+    NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
+    NSString *applang = [settings stringForKey:@"AppLang"];
+    if(applang==nil){
+        [self registerDefaultsFromSettingsBundle];
+        settings = [NSUserDefaults standardUserDefaults];
+        applang = [settings stringForKey:@"AppLang"];
+    }
+    NSLog(@"Applanguage is %@", applang);
+    if([applang hasPrefix:@"Automatic"]){
+        if([lang hasPrefix:@"de"] || [lang hasPrefix:@"hr"]){
+            NSString *path = [[NSBundle mainBundle] pathForResource:lang ofType:@"lproj"];
+            NSBundle* languageBundle = [NSBundle bundleWithPath:path];
+            [self.st setLanguageBundle:languageBundle];
+            [self.st setLanguage:lang];
+        }else{
+            lang=@"en";
+            NSString *path = [[NSBundle mainBundle] pathForResource:lang ofType:@"lproj"];
+            NSBundle* languageBundle = [NSBundle bundleWithPath:path];
+            [self.st setLanguageBundle:languageBundle];
+            [self.st setLanguage:lang];
+        }
+    }else{
+        NSString *path = [[NSBundle mainBundle] pathForResource:applang ofType:@"lproj"];
+        NSBundle* languageBundle = [NSBundle bundleWithPath:path];
+        [self.st setLanguageBundle:languageBundle];
+        [self.st setLanguage:applang];
+    }
+    //UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:st.languageBundle];
+    MAStarLoader *sl = [[MAStarLoader alloc] init];
+    MAViewController *lvc = (MAViewController *)self.window.rootViewController;//[storyboard instantiateInitialViewController];
+    //[self.window setRootViewController:lvc];
+    lvc.sl = sl;
+    lvc.st = self.st;
+    sl.delegate = lvc;
+    lvc.managedObjectContext=self.managedObjectContext;
+    lvc.locationManager = self.locationManager;
+    self.startLocation=[self.locationManager location];
+    lvc.currentLocation = self.startLocation;
     // Override point for customization after application launch.
     return YES;
+}
+
+- (void)registerDefaultsFromSettingsBundle {
+    NSString *settingsBundle = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"bundle"];
+    if(!settingsBundle) {
+        NSLog(@"Could not find Settings.bundle");
+        return;
+    }
+    
+    NSDictionary *settings = [NSDictionary dictionaryWithContentsOfFile:[settingsBundle stringByAppendingPathComponent:@"Root.plist"]];
+    NSArray *preferences = [settings objectForKey:@"PreferenceSpecifiers"];
+    
+    NSMutableDictionary *defaultsToRegister = [[NSMutableDictionary alloc] initWithCapacity:[preferences count]];
+    for(NSDictionary *prefSpecification in preferences) {
+        NSString *key = [prefSpecification objectForKey:@"Key"];
+        if(key) {
+            [defaultsToRegister setObject:[prefSpecification objectForKey:@"DefaultValue"] forKey:key];
+        }
+    }
+    [[NSUserDefaults standardUserDefaults] registerDefaults:defaultsToRegister];
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -88,7 +158,7 @@
     if (managedObjectModel != nil) {
         return managedObjectModel;
     }
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Birthday_Catcher" withExtension:@"momd"];
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"MuseumsApp" withExtension:@"momd"];
     managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return managedObjectModel;
 }
@@ -101,10 +171,17 @@
         return persistentStoreCoordinator;
     }
     
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Birthday_Catcher.sqlite"];
+    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"MuseumApp.sqlite"];
     
     NSError *error = nil;
     persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+    if( ![[NSFileManager defaultManager] fileExistsAtPath:[storeURL path]] ) {
+        // If there’s no Data Store present (which is the case when the app first launches), identify the sqlite file we added in the Bundle Resources, copy it into the Documents directory, and make it the Data Store.
+        NSString *sqlitePath = [[NSBundle mainBundle] pathForResource:@"MuseumApp" ofType:@"sqlite" inDirectory:nil];
+        NSError *anyError = nil;
+        BOOL success = [[NSFileManager defaultManager]
+                        copyItemAtPath:sqlitePath toPath:[storeURL path] error:&anyError];
+    }
     if (![persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
         /*
          Replace this implementation with code to handle the error appropriately.
@@ -142,6 +219,14 @@
 - (NSURL *)applicationDocumentsDirectory
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+}
+
+-(void)locationManager:(CLLocationManager *)manager
+   didUpdateToLocation:(CLLocation *)newLocation
+          fromLocation:(CLLocation *)oldLocation
+{
+        if (self.startLocation == nil)
+        self.startLocation = newLocation;
 }
 
 

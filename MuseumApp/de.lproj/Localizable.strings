@@ -1,0 +1,32 @@
+/* 
+  Localizable.strings
+  MuseumApp
+
+  Created by Zoran Plesko on 1/9/13.
+  Copyright (c) 2013 Zoran Plesko. All rights reserved.
+*/
+
+"InfoScreenUputeEN.png" = "InfoScreenUputeDE.png";
+"InfoScreenIkoneEN.png" = "InfoScreenIkoneDE.png";
+"InfoScreenPrazniciEN.png" = "InfoScreenPrazniciDE.png";
+"InfoScreenJezikEN.png" = "InfoScreenJezikDE.png";
+"name_en" = "name_de";
+"about_en" = "about_de";
+"hours_en" = "hours_de";
+"price_en" = "price_de";
+"guide_en" = "guide_de";
+"Address" = "Adresse";
+"Phone" = "Tel";
+"event_en" = "event_de";
+"additional_en" = "additional_de";
+"comment_en" = "comment_de";
+"Cancel" = "Abbrechen";
+"Comment" = "Kommentiere";
+"The museum can be rated only once, and you have already rated this one!" = "Sie haben bereits dieses Museum bewertet";
+"Hello!" = "Hallo!";
+"Search" = "Suchen";
+"You haven't added any museum to your favourites yet :(" = "Sie haben kein Museum umfavoritzugenomnespecialhabende sind :(";
+"It seems your internet connection is down" = "Internet ist kaput";
+"To rate the museum, you need internet connection!" = "Kein Bewerten ohne internet!";
+"To post a comment, you need internet connection!" = "Kein komentaren ohne internet";
+"No one commented on this museum yet :(</br></br>(or you can't see the comments because you are not connected to the internet)" = "Kein komentaren oder internet Kaputt";

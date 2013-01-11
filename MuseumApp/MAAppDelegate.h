@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import "MAStringTranslator.h"
 
-@interface MAAppDelegate : UIResponder <UIApplicationDelegate>{
-    //EKEventStore *eventStore;
+@interface MAAppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate>{
     NSManagedObjectContext *managedObjectContext;
 }
 
@@ -20,9 +21,13 @@
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) CLLocation *startLocation;
+@property (nonatomic, retain) MAStringTranslator *st;
+
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
-
+- (void)registerDefaultsFromSettingsBundle;
 
 
 @end

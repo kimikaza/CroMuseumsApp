@@ -1,0 +1,32 @@
+/* 
+  Localizable.strings
+  MuseumApp
+
+  Created by Zoran Plesko on 1/9/13.
+  Copyright (c) 2013 Zoran Plesko. All rights reserved.
+*/
+
+"InfoScreenUputeEN.png" = "InfoScreenUputeEN.png";
+"InfoScreenIkoneEN.png" = "InfoScreenIkoneEN.png";
+"InfoScreenPrazniciEN.png" = "InfoScreenPrazniciEN.png";
+"InfoScreenJezikEN.png" = "InfoScreenJezikEN.png";
+"name_en" = "name_en";
+"about_en" = "about_en";
+"hours_en" = "hours_en";
+"price_en" ="price_en";
+"guide_en" = "guide_en";
+"Address" = "Address";
+"Phone" = "Phone";
+"event_en" = "event_en";
+"additional_en" = "additional_en";
+"comment_en" = "comment_en";
+"Cancel" = "Cancel";
+"Comment" = "Comment";
+"The museum can be rated only once, and you have already rated this one!" = "The museum can be rated only once, and you have already rated this one!";
+"Hello!" = "Hello!";
+"Search" = "Search";
+"You haven't added any museum to your favourites yet :(" = "You haven't added any museum to your favourites yet :(";
+"It seems your internet connection is down" = "It seems your internet connection is down";
+"To rate the museum, you need internet connection!" = "To rate the museum, you need internet connection!";
+"To post a comment, you need internet connection!" = "To post a comment, you need internet connection!";
+"No one has commented on this museum yet :(</br></br>(or you can't see the comments because you are not connected to the internet)" = "No one has commented on this museum yet :(</br></br>(or you can't see the comments because you are not connected to the internet)";

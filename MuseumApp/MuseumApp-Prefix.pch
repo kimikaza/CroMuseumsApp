@@ -13,3 +13,15 @@
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
 #endif
+
+#define aniDuration 0.2
+#define kBackFrame CGRectMake(11, 25, 299, 164)
+#define kBackFrameNarrow CGRectMake(11, 25, 299, 122)
+#define kBackFontSize 13
+#define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) //1
+#define kMuseumsURL [NSURL URLWithString:@"http://www.cromuseums.com/museums.json"] //2
+#define kMuseumURL @"http://www.cromuseums.com/"
+#define kCheckMuseumURL @"www.cromuseums.com"
+#define kAuthentication @"cromuseum:cromuseum4444"
+#define kMasinerijaURL @"www.masinerija.com"
+#define kFacebookURL @"www.facebook.com"//2
