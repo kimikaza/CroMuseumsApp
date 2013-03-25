@@ -18,6 +18,7 @@
 #import "MAInfoViewController.h"
 #import "NSData+Additions.h"
 #import "MAStringTranslator.h"
+#import "MALocationManager.h"
 
 @interface MAViewController ()
 
@@ -30,13 +31,24 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    /*UIFont *font = [UIFont systemFontOfSize:kBackFontSize];
-    UIColor *blue = [UIColor blueColor];
-    attributeStringDictionary = [[NSMutableDictionary alloc] init];
-    [attributeStringDictionary setObject:font forKey:NSFontAttributeName];
-    [attributeStringDictionary setObject:blue forKey:NSForegroundColorAttributeName];
-    [attributeStringDictionary setObject:[NSNumber numberWithInt:NSUnderlineStyleSingle] forKey:NSUnderlineStyleAttributeName];*/
-    //UISearchDisplayController
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(becomeActive)
+     name:UIApplicationWillEnterForegroundNotification
+     object:nil];
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(becomeInactive)
+     name:UIApplicationDidEnterBackgroundNotification
+     object:nil];
+    self.currentLocation = nil;
+    tries = 0;
+    lm = [[MALocationManager alloc] init];
+    lm.delegate = self;
+    lm.desiredAccuracy = 500;
+    [lm getLocation];
+    queue = [[NSOperationQueue alloc] init];
+    [queue setName:@"Caching Queue"];
     self.searchDisplayController.searchBar.placeholder = [self.st locStr:@"Search"];
     [self.sl loadStars];
     self.locationManager.delegate=self;
@@ -47,13 +59,6 @@
     [fetchRequest setEntity:entity];
     [self prepareDistanceSortBlock];
     [self preparePicSortBlock];
-    //NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name_hr" ascending:YES];
-    //NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
-    //[fetchRequest setSortDescriptors:sortDescriptors];
-    //NSPredicate *predicate1 = [NSPredicate predicateWithFormat:@"partnership=nil"];
-    //NSPredicate *predicate2 = [NSPredicate predicateWithFormat:@"parent=nil"];
-    //NSPredicate *predicate=[NSCompoundPredicate andPredicateWithSubpredicates:[NSArray arrayWithObjects:predicate1, predicate2, nil]];
-    //[fetchRequest setPredicate:predicate];
     NSError *error;
     NSMutableArray *data = [[managedObjectContext executeFetchRequest:fetchRequest error:&error] mutableCopy];
     NSArray *sortedArray = [data sortedArrayUsingComparator:distanceSortBlock];
@@ -61,6 +66,7 @@
     NSLog(@"Vodafak, koliko muzeja ima u bazi %d", data.count);
     self.tData = data;
     picturesDictionary = [[NSMutableDictionary alloc] init];
+    orderedByLocation = YES;
     for(NSManagedObject *museum in tData){
         NSMutableSet *pics = [museum valueForKey:@"pictures"];
         NSEnumerator *enumer = [pics objectEnumerator];
@@ -84,6 +90,81 @@
     [self cacheCells];
 }
 
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    NSLog(@"index is %d", buttonIndex);
+    if(buttonIndex==1){
+        [lm getLocation];
+    }
+}
+
+-(void)becomeInactive{
+    NSLog(@"Inactivating, stopping location manager");
+    [lm.locationManager stopUpdatingLocation];
+}
+
+-(void)becomeActive{
+    NSLog(@"Activating, starting location manager");
+    lm.desiredAccuracy = 500;
+    [lm getLocation];
+}
+
+
+-(void)refreshLocation:(CLLocation *)newLocation{
+    NSLog(@"refresham");
+    if(newLocation == nil && tries == 0){
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:nil
+                                                     message:@"Unable to fetch location data, would you like to try again?"
+                                                    delegate:self
+                                           cancelButtonTitle:@"NO"
+                                           otherButtonTitles:@"YES", nil];
+        [av show];
+        return;
+    }else if(newLocation == nil && tries != 0 ){
+        newLocation = self.currentLocation;
+    }
+    self.currentLocation = newLocation;
+    if(orderedByLocation)
+        [tData sortUsingComparator:distanceSortBlock];
+    //[self cacheCells];
+    NSInteger i=0;
+    for(NSManagedObject *museum in tData){
+        NSDecimalNumber *latitude = [museum valueForKey:@"latitude"];
+        NSDecimalNumber *longitude = [museum valueForKey:@"longitude"];
+        CLLocation *plocation=[[CLLocation alloc] initWithLatitude:[latitude doubleValue]
+                                                         longitude:[longitude doubleValue]];
+        CLLocationDistance dist = [self.currentLocation distanceFromLocation:plocation];
+        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+        [numberFormatter setMaximumFractionDigits:1];
+        [numberFormatter setDecimalSeparator:@"."];
+        NSString *distance=[numberFormatter stringFromNumber:[NSNumber numberWithDouble:(dist/1000)]];
+        distance = [distance stringByAppendingString:@"km"];
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+        MAMuseumCell *cell = (MAMuseumCell *)[self tableView:self.uit cellForRowAtIndexPath:indexPath];
+        [cell.distance setText:distance];
+        i++;
+
+    }
+    [self.uit reloadData];
+    [self.uit scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+    for(NSManagedObject *museum in tData){
+        MAMuseumCell *cell = (MAMuseumCell *)[cells objectForKey:[museum objectID]];
+        [cell closeCell];
+    }
+    NSLog(@"HORIZ ACCURACY %f, desired is %f", newLocation.horizontalAccuracy, kCLLocationAccuracyHundredMeters);
+    if(newLocation.horizontalAccuracy>kCLLocationAccuracyHundredMeters && tries < 4){
+        NSLog(@"Getting AGAIN");
+        tries++;
+        [lm setDesiredAccuracy:100];
+        [lm performSelector:@selector(getLocation) withObject:nil afterDelay:10];
+        //[lm getLocation];
+    }else{
+        [lm setDesiredAccuracy:500];
+        tries = 0 ;
+        NSLog(@"SATISFIED WITH LOCATION");
+    }
+    
+}
+
 -(void)refreshStars:(NSMutableDictionary *)stars{
     //NSLog(@"Kao ucitali smo te zvijezde %@", stars);
     MAAppDelegate *ad = (MAAppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -104,13 +185,17 @@
 -(void)cacheCells{
     //EXTREMELY STUPID AND FUN METHOD PRECACHE EVERYTHING  JUHU!!!
     cells = [[NSMutableDictionary alloc] init];
-    /*for(int i=0; i<tData.count;i++){
+    for(int i=0; i<tData.count;i++){
         //NSManagedObject *obj = [tData objectAtIndex:i];
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
-        //MAMuseumCell *cell=(MAMuseumCell *)[self tableView:self.uit cellForRowAtIndexPath:indexPath];
+        MAMuseumCell *cell=(MAMuseumCell *)[self tableView:self.uit cellForRowAtIndexPath:indexPath];
+        //[self.uit addSubview:cell];
+        //[cell setNeedsLayout];
+        //[cell removeFromSuperview];
+        
         //NSLog(@"i is %d",i);
         //[cells setObject:cell forKey:[obj objectID]];
-    }*/
+    }
 }
 
 -(void)prepareDistanceSortBlock{
@@ -504,6 +589,14 @@
     UIButton *confirm = (UIButton *)sender;
     NSString *commenter = @"";
     NSString *commtext = commentField.text;
+    if(commtext == nil || commtext.length == 0){
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:nil
+                                                     message:@"Sorry, you can not post empty comments"
+                                                    delegate:self
+                                           cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [av show];
+        return;
+    }
     [self postMuseumComment:commenter commtext:commtext];
     MAAppDelegate *ad = (MAAppDelegate *)[[UIApplication sharedApplication] delegate];
     [ad saveContext];
@@ -611,6 +704,9 @@
     UIButton *voter = (UIButton *)sender;
     NSInteger rate=voter.tag;
     [self postMuseumRate:rate];
+    [activeMuseum setValue:@"Y" forKey:@"voted"];
+    MAAppDelegate *ad = (MAAppDelegate *)[[UIApplication sharedApplication] delegate];
+    [ad saveContext];
     [voter.superview removeFromSuperview];
     UIAlertView *av = [[UIAlertView alloc] initWithTitle:nil
                                                  message:[self.st locStr:@"Thank you!"]
@@ -618,7 +714,8 @@
                                        cancelButtonTitle:@"OK"
                                        otherButtonTitles:nil];
     [av show];
-    
+    [self.uit setUserInteractionEnabled:YES];
+    activeMuseum = nil;
 }
 
 -(void)postMuseumRating:(double) avg_rating num_ratings:(int) num_ratings{
@@ -949,6 +1046,7 @@
         MAMuseumCell *cell = (MAMuseumCell *)[cells objectForKey:[museum objectID]];
         [cell closeCell];
     }
+    orderedByLocation = NO;
 }
 
 -(IBAction)orderByRating:(id)sender{
@@ -971,6 +1069,7 @@
         MAMuseumCell *cell = (MAMuseumCell *)[cells objectForKey:[museum objectID]];
         [cell closeCell];
     }
+    orderedByLocation = NO;
 }
 
 -(IBAction)showFavourites:(id)sender{
@@ -1001,6 +1100,7 @@
         MAMuseumCell *cell = (MAMuseumCell *)[cells objectForKey:[museum objectID]];
         [cell closeCell];
     }
+    orderedByLocation = NO;
 }
 
 -(IBAction)orderByLocation:(id)sender{
@@ -1018,6 +1118,9 @@
         MAMuseumCell *cell = (MAMuseumCell *)[cells objectForKey:[museum objectID]];
         [cell closeCell];
     }
+    orderedByLocation = YES;
+    [lm setDesiredAccuracy:500];
+    [lm getLocation];
 }
 
 - (void) dismissModalView:(id)sender{
@@ -1103,9 +1206,9 @@ shouldReloadTableForSearchString:(NSString *)searchString
     if(![self reachable]){
         NSString *message;
         if([rateorcomment hasPrefix:@"rate"])
-            message = [self.st locStr:@"To rate the museum, you need internet connection!"];
+            message = [self.st locStr:@"To rate the museum, you need the internet connection!"];
         else if([rateorcomment hasPrefix:@"comment"])
-            message = [self.st locStr:@"To post a comment, you need internet connection!"];
+            message = [self.st locStr:@"To post a comment, you need the internet connection!"];
         UIAlertView *av = [[UIAlertView alloc] initWithTitle:nil
                                                      message:message
                                                     delegate:self

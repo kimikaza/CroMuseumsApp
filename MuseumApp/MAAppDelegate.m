@@ -10,6 +10,7 @@
 #import "MAViewController.h"
 #import "MAStarLoader.h"
 #import "MAStringTranslator.h"
+#import "ReviewRequest.h"
 
 @implementation MAAppDelegate
 
@@ -22,11 +23,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.locationManager = [[CLLocationManager alloc] init];
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    self.locationManager.delegate = self;
-    [self.locationManager startUpdatingLocation];
-    self.startLocation = nil;
+    //self.locationManager = [[CLLocationManager alloc] init];
+    //self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    //self.locationManager.delegate = self;
+    //[self.locationManager startUpdatingLocation];
+    //self.startLocation = nil;
     self.st = [[MAStringTranslator alloc] init];
     NSString *lang=[[NSLocale preferredLanguages] objectAtIndex:0];
     NSLog(@"iPhone language is: %@ ", lang);
@@ -65,10 +66,14 @@
     lvc.st = self.st;
     sl.delegate = lvc;
     lvc.managedObjectContext=self.managedObjectContext;
-    lvc.locationManager = self.locationManager;
-    self.startLocation=[self.locationManager location];
-    lvc.currentLocation = self.startLocation;
+    //lvc.locationManager = self.locationManager;
+    //self.startLocation=[self.locationManager location];
+    //lvc.currentLocation = self.startLocation;
     // Override point for customization after application launch.
+    NSURL *url = [NSURL URLWithString:@"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=593277873"];
+    rr =
+    [[ReviewRequest alloc] initWithItunesUrl:url];
+    [rr askForReviewIfNeeded];
     return YES;
 }
 

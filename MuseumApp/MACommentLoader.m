@@ -53,7 +53,7 @@
              "</style> \n"
              "</head> \n"
              "<body>%@</body> \n"
-             "</html>", @"helvetica", [NSNumber numberWithInt:kBackFontSize], htmlString];
+             "</html>", @"helvetica", [NSNumber numberWithInt:kBackFontSize-1], htmlString];
             //NSLog(@"procito komentare:%@",htmlString);
             [self performSelectorOnMainThread:@selector(finishedFetchingData:) withObject:htmlString waitUntilDone:YES];
         }else{

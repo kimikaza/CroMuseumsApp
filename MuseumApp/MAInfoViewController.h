@@ -15,7 +15,7 @@
 -(void)dismissModalView:(id)sender;
 @end
 
-@interface MAInfoViewController : UIViewController{
+@interface MAInfoViewController : UIViewController<UIGestureRecognizerDelegate>{
     IBOutlet UIImageView *upute;
     IBOutlet UIImageView *ikone;
     IBOutlet UIImageView *praznici;

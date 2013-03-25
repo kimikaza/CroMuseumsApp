@@ -52,6 +52,6 @@
     </entity>
     <elements>
         <element name="Museum" positionX="36" positionY="192" width="128" height="690"/>
-        <element name="Picture" positionX="-227" positionY="192" width="128" height="60"/>
+        <element name="Picture" positionX="-191" positionY="189" width="128" height="60"/>
     </elements>
 </model>

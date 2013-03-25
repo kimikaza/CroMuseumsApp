@@ -25,3 +25,4 @@
 #define kAuthentication @"cromuseum:cromuseum4444"
 #define kMasinerijaURL @"www.masinerija.com"
 #define kFacebookURL @"www.facebook.com"//2
+#define locationUpdateDelay 45

@@ -14,8 +14,9 @@
 #import "MAInfoViewController.h"
 #import "MAStarLoader.h"
 #import "MAStringTranslator.h"
+#import "MALocationManager.h"
 
-@interface MAViewController : UIViewController<UITableViewDataSource, MATableViewDelegate, CLLocationManagerDelegate, MAMapViewControllerDelegate, UIGestureRecognizerDelegate, UIWebViewDelegate, MFMailComposeViewControllerDelegate, MAInfoViewControllerDelegate, MAStarLoaderDelegate, UITextViewDelegate>{
+@interface MAViewController : UIViewController<UITableViewDataSource, MATableViewDelegate, CLLocationManagerDelegate, MAMapViewControllerDelegate, UIGestureRecognizerDelegate, UIWebViewDelegate, MFMailComposeViewControllerDelegate, MAInfoViewControllerDelegate, MAStarLoaderDelegate, UITextViewDelegate, MALocationManagerDelegate, UIAlertViewDelegate>{
     NSMutableArray *tData;
     BOOL tappable;
     NSArray *searchResults;
@@ -23,6 +24,10 @@
     NSManagedObject *activeMuseum;
     UITextView *commentField;
     NSString *lastServer_id;
+    MALocationManager *lm;
+    NSOperationQueue *queue;
+    NSInteger tries;
+    BOOL orderedByLocation;
 }
 
 @property (nonatomic, retain) NSMutableArray *tData;
@@ -58,4 +63,6 @@
 -(BOOL)checkReachability:(NSString *)rateorcomment;
 //IF WEBSITE IS REACHABLE then IT IS POSSIBLE TO OFFER online services
 -(BOOL)reachable;
+-(void)becomeActive;
+-(void)becomeInactive;
 @end

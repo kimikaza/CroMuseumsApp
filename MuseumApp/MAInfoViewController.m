@@ -79,7 +79,7 @@
 -(BOOL)checkReachability:(NSString *)url{
     if(![self reachable:url]){
         UIAlertView *av = [[UIAlertView alloc] initWithTitle:nil
-                                                     message:[self.st locStr:@"It seems your internet connection is down"]
+                                                     message:[self.st locStr:@"It seems you are not connected to the internet"]
                                                     delegate:self
                                            cancelButtonTitle:@"OK"
                                            otherButtonTitles:nil];

@@ -133,7 +133,7 @@
     if(![self reachable]){
         //NSLog(@"message expected here:%@",[self.st locStr:@"It seems your internet connection (or our server?) is down"]);
         UIAlertView *av = [[UIAlertView alloc] initWithTitle:nil
-                                                     message:[self.st locStr:@"It seems your internet connection is down"]
+                                                     message:[self.st locStr:@"It seems you are not connected to the internet"]
                                                     delegate:self
                                            cancelButtonTitle:@"OK"
                                            otherButtonTitles:nil];
@@ -321,7 +321,7 @@
     [comments setFrame:kBackFrame];
     [secondView addSubview:comments];
     [UIView animateWithDuration:aniDuration animations:^{
-        [invisibleAddComment setFrame:CGRectMake(242,0,40,30)];
+        [invisibleAddComment setFrame:CGRectMake(240,0,40,30)];
         //[invisibleAddComment setBackgroundColor:[UIColor redColor]];
     }];
 }

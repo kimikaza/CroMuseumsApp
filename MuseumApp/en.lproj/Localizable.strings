@@ -26,7 +26,8 @@
 "Hello!" = "Hello!";
 "Search" = "Search";
 "You haven't added any museum to your favourites yet :(" = "You haven't added any museum to your favourites yet :(";
-"It seems your internet connection is down" = "It seems your internet connection is down";
-"To rate the museum, you need internet connection!" = "To rate the museum, you need internet connection!";
-"To post a comment, you need internet connection!" = "To post a comment, you need internet connection!";
+"It seems you are not connected to the internet" = "It seems you are not connected to the internet";
+"To rate the museum, you need the internet connection!" = "To rate the museum, you need the internet connection!";
+"To post a comment, you need the internet connection!" = "To post a comment, you need the internet connection!";
 "No one has commented on this museum yet :(</br></br>(or you can't see the comments because you are not connected to the internet)" = "No one has commented on this museum yet :(</br></br>(or you can't see the comments because you are not connected to the internet)";
+"Thank you!" = "Thank you!";

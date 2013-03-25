@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "MAStringTranslator.h"
+#import "ReviewRequest.h"
 
 @interface MAAppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate>{
     NSManagedObjectContext *managedObjectContext;
+    ReviewRequest *rr;
 }
 
 

@@ -26,7 +26,8 @@
 "Hello!" = "Pozdrav!";
 "Search" = "Traži";
 "You haven't added any museum to your favourites yet :(" = "Nemaš spremljen još niti jedan muzej pod svoje favorite :(";
-"It seems your internet connection is down" = "Izgleda da trenutno nemaš vezu s internetom!";
-"To rate the museum, you need internet connection!" = "Izgleda da trenutno nemaš vezu s internetom pa ne možeš ocijeniti muzej!";
-"To post a comment, you need internet connection!" = "Izgleda da trenutno nemaš vezu s internetom pa ne možeš komentirati muzej!";
-"No one commented on this museum yet :(</br></br>(or you can't see the comments because you are not connected to the internet)" = "Još nitko nije komentirao ovaj muzej :(</br></br>(ili ne vidiš komentare jer nemaš vezu s internetom)";
+"It seems you are not connected to the internet" = "Izgleda da trenutno nemaš vezu s internetom!";
+"To rate the museum, you need the internet connection!" = "Izgleda da trenutno nemaš vezu s internetom pa ne možeš ocijeniti muzej!";
+"To post a comment, you need the internet connection!" = "Izgleda da trenutno nemaš vezu s internetom pa ne možeš komentirati muzej!";
+"No one has commented on this museum yet :(</br></br>(or you can't see the comments because you are not connected to the internet)" = "Još nitko nije komentirao ovaj muzej :(</br></br>(ili ne vidiš komentare jer nemaš vezu s internetom)";
+"Thank you!" = "Hvala!";
